@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Card4 } from './components/Card';
+import SearchInput from './components/SearchInput';
 import DropdownCountry from './components/Dropdown';
 
 // NextUi
-import { NextUIProvider, Input, Grid, Text } from '@nextui-org/react';
+import { NextUIProvider, Grid, Text } from '@nextui-org/react';
 
 //URL
 const BASE_URL = 'https://restcountries.com/v3.1/all';
@@ -18,8 +19,6 @@ function App() {
       .then(data => setCountriesData(data));
   }, []);
 
-  console.log(countriesData);
-
   const searchHandler = event => {
     setSearch(event.target.value);
   };
@@ -27,6 +26,8 @@ function App() {
   const searchCountries = countriesData.filter(country =>
     country.name.common.toLowerCase().includes(search.toLocaleLowerCase())
   );
+
+  console.log(countriesData);
 
   return (
     <NextUIProvider>
@@ -40,10 +41,8 @@ function App() {
 
       <Grid.Container gap={2} justify='space-between' alignItems='center'>
         <Grid>
-          <Input
-            labelPlaceholder='Search for a country...'
-            status='primary'
-            width='300px'
+          <SearchInput
+            countriesData={countriesData}
             value={search}
             onChange={searchHandler}
           />
