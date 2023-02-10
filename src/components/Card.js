@@ -1,7 +1,12 @@
 import { Card, Col, Row, Text } from '@nextui-org/react';
 
 export const Card4 = ({ data }) => (
-  <Card css={{ w: '100%', h: '400px' }}>
+  <Card
+    css={{ w: '100%', h: '400px' }}
+    isPressable
+    isHoverable
+    variant='bordered'
+  >
     <Card.Body css={{ p: 0 }}>
       <Card.Image
         src={data.flags.svg}
