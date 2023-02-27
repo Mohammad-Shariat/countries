@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { Card5 } from './SingleCountryCard';
+
 const Country = () => {
   const [country, setCountry] = useState([]);
   const { name } = useParams();
@@ -18,7 +20,12 @@ const Country = () => {
     getCountry();
   }, [name]);
 
-  return <div>{console.log(country)}</div>;
+  return (
+    <>
+      {console.log(country)}
+      <Card5 country={country} />
+    </>
+  );
 };
 
 export default Country;

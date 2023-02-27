@@ -12,6 +12,7 @@ const BASE_URL = 'https://restcountries.com/v3.1/all';
 function Countries() {
   const [countriesData, setCountriesData] = useState([]);
   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -26,6 +27,26 @@ function Countries() {
   const searchCountries = countriesData.filter(country =>
     country.name.common.toLowerCase().includes(search.toLocaleLowerCase())
   );
+
+  // Filter By Region
+
+  async function filterByRegion(region) {
+    try {
+      const res = await fetch(
+        `https://restcountries.com/v3.1/region/${region}`
+      );
+      const data = await res.json();
+      console.log(data);
+      setFilter(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function handleFilterByRegion(e) {
+    e.preventDefault();
+    filterByRegion();
+  }
 
   console.log(countriesData);
 
@@ -49,7 +70,11 @@ function Countries() {
             />
           </Grid>
           <Grid>
-            <DropdownCountry />
+            <DropdownCountry
+              handleFilterByRegion={handleFilterByRegion}
+              value={filter}
+              onChange={e => filterByRegion(e.target.value)}
+            />
           </Grid>
         </Grid.Container>
 
