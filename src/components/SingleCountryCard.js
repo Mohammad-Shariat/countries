@@ -55,7 +55,7 @@ export const Card5 = ({ country }) =>
             <Text h4 color='#333'>
               Languages:
               {Object.values(item.languages).map(language => {
-                return <span>-{language}</span>;
+                return <span>{` ${language}`}</span>;
               })}
             </Text>
           </Grid>
