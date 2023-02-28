@@ -78,12 +78,12 @@ export const Card5 = ({ country }) =>
                 );
               })}
             </Row>
-            <Row justify='center' align='center' gap={4}>
-              <Link to='/'>
-                <Button>Back</Button>
-              </Link>
-            </Row>
           </Grid>
+          <Row justify='flex-end' align='center' width='100%'>
+            <Link to='/'>
+              <Button>Back</Button>
+            </Link>
+          </Row>
         </Grid.Container>
       </Grid.Container>
     );

@@ -79,7 +79,7 @@ function Countries() {
         </Grid.Container>
 
         <Grid.Container gap={2} justify='center'>
-          {searchCountries.map(country => {
+          {searchCountries?.map(country => {
             return (
               <Grid
                 xl={2}
