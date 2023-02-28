@@ -68,7 +68,7 @@ export const Card5 = ({ country }) =>
           }}
         >
           <Grid>
-            <Row justify='space-between' align='center' gap={2}>
+            <Row justify='space-between' align='center' gap={2} wrap='wrap'>
               <Text h5 color='#333'>
                 {`Borders : `}
               </Text>
@@ -77,6 +77,8 @@ export const Card5 = ({ country }) =>
                   <Button key={index} size='xs' disabled>{` ${border}`}</Button>
                 );
               })}
+            </Row>
+            <Row justify='center' align='center' gap={4}>
               <Link to='/'>
                 <Button>Back</Button>
               </Link>
